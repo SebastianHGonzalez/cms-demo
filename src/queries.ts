@@ -26,7 +26,7 @@ export function useCreateItemMutation() {
 
   return useMutation({
     mutationFn: createItem,
-    onMutate: async (variables) => {
+    onMutate: async () => {
       await queryClient.cancelQueries()
     },
   })
@@ -37,7 +37,7 @@ export function useDeleteItemMutation() {
 
   return useMutation({
     mutationFn: deleteItem,
-    onMutate: async (variables) => {
+    onMutate: async () => {
       await queryClient.cancelQueries()
     },
   })

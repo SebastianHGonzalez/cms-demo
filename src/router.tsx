@@ -21,7 +21,7 @@ export function createRouter() {
       },
     },
     mutationCache: new MutationCache({
-      onError: (error) => {
+      onError: () => {
         // toast(error.message, { className: 'bg-red-500 text-white' })
       },
       onSettled: () => {
