@@ -5,7 +5,6 @@ import {
   notifyManager,
 } from '@tanstack/react-query'
 import { routerWithQueryClient } from '@tanstack/react-router-with-query'
-import toast from 'react-hot-toast'
 import { routeTree } from './routeTree.gen'
 import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'
 import { NotFound } from './components/NotFound'
@@ -23,7 +22,7 @@ export function createRouter() {
     },
     mutationCache: new MutationCache({
       onError: (error) => {
-        toast(error.message, { className: 'bg-red-500 text-white' })
+        // toast(error.message, { className: 'bg-red-500 text-white' })
       },
       onSettled: () => {
         if (queryClient.isMutating() === 1) {
