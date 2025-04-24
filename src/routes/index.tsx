@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { Loader } from '~/components/Loader'
-import { itemQueries } from '~/queries'
+import { pageQueries } from '~/queries'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -9,22 +9,23 @@ export const Route = createFileRoute('/')({
 })
 
 function Home() {
-  const itemsQuery = useSuspenseQuery(itemQueries.list())
+  const pagesQuery = useSuspenseQuery(pageQueries.list())
 
   return (
     <div className="p-8 space-y-2">
-      <h1 className="text-2xl font-black">Items</h1>
+      <h1 className="text-2xl font-black">Pages</h1>
       <ul className="flex flex-wrap list-disc">
-        {itemsQuery.data.map((item) => (
-          <li key={item.id} className="ml-4">
+        {pagesQuery.data.pages.map((page) => (
+          <li key={page.id} className="ml-4">
             <Link
-              to="/items/$itemId"
+              to="/pages/$pageId"
               params={{
-                itemId: item.id,
+                pageId: page.id,
               }}
               className="font-bold text-blue-500"
             >
-              {item.id}
+              {page.title}
+              <i>({page.id})</i>
             </Link>
           </li>
         ))}

@@ -12,7 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as ItemsItemIdImport } from './routes/items.$itemId'
+import { Route as PagesPageIdImport } from './routes/pages.$pageId'
 
 // Create/Update Routes
 
@@ -22,9 +22,9 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ItemsItemIdRoute = ItemsItemIdImport.update({
-  id: '/items/$itemId',
-  path: '/items/$itemId',
+const PagesPageIdRoute = PagesPageIdImport.update({
+  id: '/pages/$pageId',
+  path: '/pages/$pageId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +39,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/items/$itemId': {
-      id: '/items/$itemId'
-      path: '/items/$itemId'
-      fullPath: '/items/$itemId'
-      preLoaderRoute: typeof ItemsItemIdImport
+    '/pages/$pageId': {
+      id: '/pages/$pageId'
+      path: '/pages/$pageId'
+      fullPath: '/pages/$pageId'
+      preLoaderRoute: typeof PagesPageIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/items/$itemId': typeof ItemsItemIdRoute
+  '/pages/$pageId': typeof PagesPageIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/items/$itemId': typeof ItemsItemIdRoute
+  '/pages/$pageId': typeof PagesPageIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/items/$itemId': typeof ItemsItemIdRoute
+  '/pages/$pageId': typeof PagesPageIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/items/$itemId'
+  fullPaths: '/' | '/pages/$pageId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/items/$itemId'
-  id: '__root__' | '/' | '/items/$itemId'
+  to: '/' | '/pages/$pageId'
+  id: '__root__' | '/' | '/pages/$pageId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ItemsItemIdRoute: typeof ItemsItemIdRoute
+  PagesPageIdRoute: typeof PagesPageIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ItemsItemIdRoute: ItemsItemIdRoute,
+  PagesPageIdRoute: PagesPageIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +97,14 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/items/$itemId"
+        "/pages/$pageId"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/items/$itemId": {
-      "filePath": "items.$itemId.tsx"
+    "/pages/$pageId": {
+      "filePath": "pages.$pageId.tsx"
     }
   }
 }

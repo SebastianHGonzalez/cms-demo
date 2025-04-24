@@ -1,50 +1,37 @@
 import {
-  queryOptions,
-  useMutation,
-  useQueryClient,
+  queryOptions
 } from '@tanstack/react-query'
-import {
-  createItem,
-  deleteItem,
-  getItem,
-  getItems,
-  updateItem,
-} from './db/item.js'
+import { describePage, listPages } from './db/page.js'
 
-export const itemQueries = {
-  list: () =>
-    queryOptions({ queryKey: ['items', 'list'], queryFn: () => getItems() }),
-  detail: (id: string) =>
-    queryOptions({
-      queryKey: ['items', 'detail', id],
-      queryFn: () => getItem({ data: id }),
-    }),
+export const pageQueries = {
+  list: () => queryOptions({ queryKey: ['pages', 'list'], queryFn: () => listPages() }),
+  describe: (id: string) => queryOptions({ queryKey: ['pages', 'describe', id], queryFn: () => describePage({ data: id }), }),
 }
 
-export function useCreateItemMutation() {
-  const queryClient = useQueryClient()
+// export function useCreateItemMutation() {
+//   const queryClient = useQueryClient()
 
-  return useMutation({
-    mutationFn: createItem,
-    onMutate: async () => {
-      await queryClient.cancelQueries()
-    },
-  })
-}
+//   return useMutation({
+//     mutationFn: createItem,
+//     onMutate: async () => {
+//       await queryClient.cancelQueries()
+//     },
+//   })
+// }
 
-export function useDeleteItemMutation() {
-  const queryClient = useQueryClient()
+// export function useDeleteItemMutation() {
+//   const queryClient = useQueryClient()
 
-  return useMutation({
-    mutationFn: deleteItem,
-    onMutate: async () => {
-      await queryClient.cancelQueries()
-    },
-  })
-}
+//   return useMutation({
+//     mutationFn: deleteItem,
+//     onMutate: async () => {
+//       await queryClient.cancelQueries()
+//     },
+//   })
+// }
 
-export function useUpdateItemMutation() {
-  return useMutation({
-    mutationFn: updateItem,
-  })
-}
+// export function useUpdateItemMutation() {
+//   return useMutation({
+//     mutationFn: updateItem,
+//   })
+// }
