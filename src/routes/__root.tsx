@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { scan } from "react-scan";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools/production";
 import {
   HeadContent,
@@ -75,6 +77,13 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    // Make sure to run this only after hydration
+    scan({
+      enabled: true,
+    });
+  }, []);
+
   return (
     <html>
       <head>

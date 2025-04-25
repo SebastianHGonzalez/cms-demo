@@ -26,7 +26,7 @@ export function Icon({
 
 export function LoginIcon() {
   return (
-    <svg className="inline self-center w-8 h-8 text-white transform scale-x-[-1]">
+    <svg className="inline h-8 w-8 scale-x-[-1] transform self-center text-white">
       <use href={`${iconsHref}#login`} />
     </svg>
   );
@@ -34,7 +34,7 @@ export function LoginIcon() {
 
 export function LogoutIcon() {
   return (
-    <svg className="inline self-center w-8 h-8 text-white">
+    <svg className="inline h-8 w-8 self-center text-white">
       <use href={`${iconsHref}#logout`} />
     </svg>
   );
