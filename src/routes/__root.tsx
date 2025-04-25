@@ -14,6 +14,7 @@ import type { QueryClient } from "@tanstack/react-query";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
 import appCss from "~/styles/app.css?url";
+import globalsCss from "~/styles/globals.css?url";
 import { seo } from "~/utils/seo";
 
 export const Route = createRootRouteWithContext<{
@@ -36,6 +37,7 @@ export const Route = createRootRouteWithContext<{
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: globalsCss },
       {
         rel: "apple-touch-icon",
         sizes: "180x180",
