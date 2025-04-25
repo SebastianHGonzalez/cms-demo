@@ -1,6 +1,7 @@
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools/production";
 import {
   HeadContent,
+  Link,
   Outlet,
   Scripts,
   createRootRouteWithContext,
@@ -80,31 +81,29 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <div id="root" className="flex flex-col min-h-screen">
-          <header className="flex items-center space-x-4 p-4 bg-gray-800 text-white">
+        <div id="root" className="flex min-h-screen flex-col">
+          <header className="flex items-center space-x-4 bg-gray-800 p-4 text-white">
             <h1 className="text-2xl font-bold">CMS Demo</h1>
 
-            <nav className="contents">
-              <ul className="contents">
+            <nav>
+              <ul className="flex items-center space-x-4">
                 <li>
-                  <a href="/" className="text-white hover:underline">
+                  <Link to="/" className="text-white hover:underline">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/about" className="text-white hover:underline">
-                    About
-                  </a>
+                  <Link to="/pages" className="text-white hover:underline">
+                    Pages
+                  </Link>
                 </li>
               </ul>
             </nav>
           </header>
 
           <div className="flex-1">{children}</div>
-          <footer className="flex justify-center items-center p-4 bg-gray-800 text-white">
-            <p className="text-sm">
-              CMS Demo
-            </p>
+          <footer className="flex items-center justify-center bg-gray-800 p-4 text-white">
+            <p className="text-sm">CMS Demo</p>
           </footer>
         </div>
 
