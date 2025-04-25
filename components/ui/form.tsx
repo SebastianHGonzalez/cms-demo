@@ -44,7 +44,7 @@ function FormField({
   return (
     <div
       data-slot="form-item"
-      className={cn("grid gap-2", className)}
+      className={cn("grid gap-1", className)}
       {...props}
     >
       <FormLabel ids={ids}>{label}</FormLabel>

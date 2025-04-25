@@ -30,7 +30,7 @@ export function Container({
   const HeaderComp = headerVariant ?? "h2";
 
   return (
-    <Card className="mx-8 my-4 gap-4">
+    <Card className="mx-8 my-4 gap-6">
       <CardHeader>
         <Header asChild className="mx-0 my-0" variant={headerVariant}>
           <CardTitle asChild>
@@ -40,7 +40,7 @@ export function Container({
         {description && <CardDescription>{description}</CardDescription>}
         {actions && <CardAction>{actions}</CardAction>}
       </CardHeader>
-      <CardContent>{children}</CardContent>
+      <CardContent className="flex flex-col gap-5">{children}</CardContent>
       {footer && (
         <CardFooter className="flex flex-row justify-end">{footer}</CardFooter>
       )}
