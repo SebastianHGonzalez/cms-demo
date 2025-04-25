@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { Link } from "@tanstack/react-router";
 
 export function NotFound({ children }: { children?: never }) {
   return (
@@ -21,5 +21,5 @@ export function NotFound({ children }: { children?: never }) {
         </Link>
       </p>
     </div>
-  )
+  );
 }

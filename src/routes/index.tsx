@@ -1,15 +1,15 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { Loader } from '~/components/Loader'
-import { pageQueries } from '~/queries'
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { Loader } from "~/components/Loader";
+import { pageQueries } from "~/queries";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: Home,
   pendingComponent: () => <Loader />,
-})
+});
 
 function Home() {
-  const pagesQuery = useSuspenseQuery(pageQueries.list())
+  const pagesQuery = useSuspenseQuery(pageQueries.list());
 
   return (
     <div className="p-8 space-y-2">
@@ -31,5 +31,5 @@ function Home() {
         ))}
       </ul>
     </div>
-  )
+  );
 }

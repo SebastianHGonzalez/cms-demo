@@ -149,14 +149,14 @@ function Gauge({ value }: GaugeProps) {
       setIsGrabbing(true);
       const newValue =
         min + (e.clientX / e.currentTarget.clientWidth) * (max - min);
-    //   setCurrentValue(newValue);
+      console.log(newValue);
     },
     onDragEnd: (e: DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       setIsGrabbing(false);
       const newValue =
         min + (e.clientX / e.currentTarget.clientWidth) * (max - min);
-    //   setCurrentValue(newValue);
+      console.log(newValue);
     },
   };
 
