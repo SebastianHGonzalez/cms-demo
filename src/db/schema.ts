@@ -4,7 +4,7 @@ export const idSchema = z.string().uuid();
 
 const entity = z.object({
   id: idSchema,
-  type: z.string(),
+  type: z.string().min(1),
 });
 
 const permanentSchedule = z.object({
@@ -19,12 +19,12 @@ const temporarySchedule = z.object({
 
 const cronSchedule = z.object({
   type: z.literal("cronSchedule"),
-  cron: z.string(),
-  timezone: z.string(),
+  cron: z.string().min(1),
+  timezone: z.string().min(1),
 });
 
 const schedule = z
-  .union([permanentSchedule, temporarySchedule, cronSchedule])
+  .discriminatedUnion('type', [permanentSchedule, temporarySchedule, cronSchedule])
   .default({ type: "permanentSchedule" })
   .optional();
 
@@ -43,7 +43,7 @@ const promo = entity
   .extend({
     type: z.literal("promo"),
 
-    title: z.string(),
+    title: z.string().min(1),
   })
   .merge(withSchedule)
   .merge(withVisibility);
@@ -52,13 +52,13 @@ const showcase = entity
   .extend({
     type: z.literal("showcase"),
 
-    title: z.string(),
-    category: z.string(),
+    title: z.string().min(1),
+    category: z.string().min(1),
   })
   .merge(withSchedule)
   .merge(withVisibility);
 
-const content = z.union([promo, showcase]);
+const content = z.discriminatedUnion('type', [promo, showcase]);
 
 const contentStack = entity.extend({
   type: z.literal("contentStack"),
@@ -73,20 +73,21 @@ export const contentGroup = entity.extend({
 const landingMatcher = z.object({
   type: z.literal("landing"),
 
-  slug: z.string(),
+  slug: z.string().min(1),
 });
 
 const listingMatcher = z.object({
   type: z.literal("listing"),
 
-  category: z.string(),
+  category: z.string().min(1),
 });
 
-const pageMatcher = z.union([landingMatcher, listingMatcher]);
+export const pageMatcher = z
+  .discriminatedUnion('type', [landingMatcher, listingMatcher]);
 
 export const page = entity.extend({
   type: z.literal("page"),
-  title: z.string(),
+  title: z.string().min(1),
 
   matcher: pageMatcher,
   contentRows: z.array(contentGroup),
