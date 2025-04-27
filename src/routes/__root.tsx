@@ -112,7 +112,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             </nav>
           </header>
 
-          <div className="flex-1">{children}</div>
+          <div className="md:flex flex-1 flex-row justify-between">
+            <main className="shrink-10 grow-0 basis-full overflow-x-hidden">{children}</main>
+
+            <aside id="side-panel" className="contents"/>
+          </div>
+
           <footer className="flex items-center justify-center bg-gray-800 p-4 text-white">
             <p className="text-sm">CMS Demo</p>
           </footer>

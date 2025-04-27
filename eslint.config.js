@@ -15,6 +15,7 @@ export default defineConfig([
     plugins: { js }, 
     extends: ["js/recommended"],
     rules: {
+      "react/no-children-prop": 'off',
       "react/react-in-jsx-scope": "off"
     }
   },
